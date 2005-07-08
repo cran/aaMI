@@ -1,4 +1,4 @@
-aaMI <- function(file){
+aaMIn <- function(file){
   AA <- c(LETTERS[-c(2,10,15,21,24,26)],"-")
   AA.F <- matrix(0,nrow=21,ncol=ncol(file),dimnames=list(AA,seq(1:ncol(file))))
   H <- vector(length=ncol(file))
@@ -13,7 +13,8 @@ aaMI <- function(file){
   for(i in 1:ncol(file)){
     for(j in i:ncol(file)){
       FrqT <- table(file[,i],file[,j])/sum(table(file[,i],file[,j]))
-      MIt[i,j] <- H[i] + H[j] + sum(FrqT[FrqT != 0] * log2(FrqT[FrqT != 0]))
+     JointH <- sum(FrqT[FrqT != 0] * log2(FrqT[FrqT != 0]))
+      MIt[i,j] <- (H[i]+H[j] + JointH)/(-1*JointH)
     }
   }
   return(MIt)

@@ -11,6 +11,7 @@ read.CX <- function(file){
     for(j in 1:length(rep))
       CX2[i,2] <- paste(CX2[i,2],CX1[rep[j],2],sep="")
   }
+  CX2[,2] <- toupper(CX2[,2]) # Make sure all aa symbols are upper case.
   align1 <- matrix(NA,nrow=nrow(CX2),ncol=nchar(CX2[1,2]),
     dimnames=list(CX2[,1],seq(1:nchar(CX2[1,2]))))
   for(i in 1:nrow(align1))

@@ -10,6 +10,7 @@ read.FASTA <- function(file){
        FA2[F2row,2] <- paste(FA2[F2row,2],FA1[i+1,],sep="")
      } # combine multiple rows of sequence into one row 
   }
+  FA2[,2] <- toupper(FA2[,2]) # Make sure all aa symbols are upper case.
   align1 <- matrix(NA,nrow=nrow(FA2),ncol=nchar(as.character(FA2[1,2])),
                    dimnames=list(FA2[,1],seq(1:nchar(as.character(FA2[1,2])))))
   for(i in 1:nrow(align1))

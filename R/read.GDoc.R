@@ -13,6 +13,7 @@ read.GDoc <- function(file){
         GD2[i,2] <- paste(GD2[i,2],GD1[rep[j],k],sep="")
     }
   }
+  GD2[,2] <- toupper(GD2[,2]) # Make sure all aa symbols are upper case.
   GD2[,2] <- gsub("\\.","-",GD2[,2]) # change style of gap character
   align1 <- matrix(NA,nrow=nrow(GD2),ncol=nchar(GD2[1,2]),
     dimnames=list(GD2[,1],seq(1:nchar(GD2[1,2]))))
